@@ -148,7 +148,13 @@ async def _get_json(path: str, params: dict, client: httpx.AsyncClient | None) -
     try:
         resp = await client.get(f"{BASE_URL}/{path}", params=params, timeout=15)
         resp.raise_for_status()
-        data = resp.json()
+        # Bilinmeyen ICAO'da API boş gövde döndürebilir (HTTP 200 + "") -> [] kabul et.
+        if not resp.text.strip():
+            return []
+        try:
+            data = resp.json()
+        except ValueError:
+            return []   # geçersiz/eksik JSON -> veri yok (dürüst abstain)
         # API tek id için de liste döndürür; boşsa [].
         return data if isinstance(data, list) else [data]
     finally:

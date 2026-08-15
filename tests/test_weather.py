@@ -4,8 +4,12 @@ METAR/TAF parse testleri — ağdan bağımsız (örnek JSON ile).
 Ağ çağrısı test etmeyiz (kırılgan olur); parse mantığını sabit örneklerle kanıtlarız.
 """
 
+import asyncio
 from datetime import datetime, timezone
 
+import httpx
+
+from backend.tools import weather
 from backend.tools.weather import (
     parse_visibility_sm,
     parse_ceiling_ft,
@@ -110,3 +114,25 @@ class TestTaf:
         when = datetime.fromtimestamp(1700001000, tz=timezone.utc).replace(tzinfo=None)
         sel = select_taf_period(periods, when)
         assert sel is not None  # tz'siz zaman UTC kabul edilir
+
+
+class TestEmptyResponse:
+    """Bilinmeyen ICAO'da API boş gövde döndürür -> çökme değil, dürüst 'veri yok'."""
+
+    def test_empty_body_metar_returns_none(self):
+        transport = httpx.MockTransport(lambda req: httpx.Response(200, text=""))
+
+        async def go():
+            async with httpx.AsyncClient(transport=transport) as client:
+                return await weather.fetch_metar("ZZZZ", client)
+
+        assert asyncio.run(go()) is None
+
+    def test_empty_body_taf_returns_empty_list(self):
+        transport = httpx.MockTransport(lambda req: httpx.Response(200, text=""))
+
+        async def go():
+            async with httpx.AsyncClient(transport=transport) as client:
+                return await weather.fetch_taf("ZZZZ", client)
+
+        assert asyncio.run(go()) == []

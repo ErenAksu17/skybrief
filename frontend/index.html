@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🛩️ SkyBrief — Uçuş Brifingi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🛩️</span>
+      <div>
+        <h1>SkyBrief</h1>
+        <span class="tag">Deterministik Uçuş Brifingi</span>
+      </div>
+    </div>
+    <span class="advisory">ADVISORY ONLY · PIC karar verir</span>
+  </header>
+
+  <main class="layout">
+    <!-- ===== SORGU FORMU ===== -->
+    <section class="card form-card">
+      <h2>Uçuş Sorgusu</h2>
+      <form id="brief-form">
+        <div class="grid2">
+          <label>Kalkış (ICAO)
+            <input id="dep" type="text" placeholder="LTAC" maxlength="4" autocomplete="off" required />
+          </label>
+          <label>Varış (ICAO)
+            <input id="dst" type="text" placeholder="LTAI" maxlength="4" autocomplete="off" required />
+          </label>
+        </div>
+        <div class="grid2">
+          <label>Uçak
+            <select id="aircraft"><option value="C172">Cessna 172</option></select>
+          </label>
+          <label>Kural
+            <select id="rule"><option value="VFR">VFR</option><option value="IFR">IFR</option></select>
+          </label>
+        </div>
+        <div class="grid2">
+          <label>Jurisdiction
+            <select id="juris"><option value="TR">TR (SERA)</option><option value="FAA">FAA</option><option value="EASA">EASA</option></select>
+          </label>
+          <label>Kalkış zamanı (ops.)
+            <input id="time" type="datetime-local" />
+          </label>
+        </div>
+
+        <details class="advanced">
+          <summary>Gelişmiş (pist yönü — boşsa rüzgâra göre otomatik seçilir)</summary>
+          <div class="grid2">
+            <label>Kalkış pisti (°)<input id="dep-rwy" type="number" min="0" max="360" placeholder="oto" /></label>
+            <label>Varış pisti (°)<input id="dst-rwy" type="number" min="0" max="360" placeholder="oto" /></label>
+          </div>
+        </details>
+
+        <button type="submit" id="submit-btn">Brifing Al</button>
+      </form>
+      <p class="hint">Örnek: LTAC → LTAI · veri kaynağı aviationweather.gov (METAR/TAF)</p>
+    </section>
+
+    <!-- ===== SONUÇ ===== -->
+    <section class="card result-card">
+      <div id="placeholder" class="placeholder">
+        <span class="big">🧭</span>
+        <p>Bir uçuş sorgusu gönderin.<br>Sonuç burada, kaynak-atıflı ve dürüst biçimde görünecek.</p>
+      </div>
+      <div id="result" class="hidden"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -11,10 +11,13 @@ Uç noktalar:
 from __future__ import annotations
 
 from datetime import datetime
+from pathlib import Path
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from backend.models import Briefing, FlightQuery
@@ -80,3 +83,13 @@ async def brief(req: BriefRequest) -> Briefing:
             rf for rf in result.briefing.risk_factors if rf.code not in codes
         ]
     return result.briefing
+
+
+# --- Frontend'i servis et (tek komutla local demo) -----------------------
+FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
+if FRONTEND_DIR.exists():
+    @app.get("/")
+    async def index():
+        return FileResponse(FRONTEND_DIR / "index.html")
+
+    app.mount("/", StaticFiles(directory=FRONTEND_DIR), name="static")
