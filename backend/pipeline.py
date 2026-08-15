@@ -21,6 +21,7 @@ import httpx
 from backend.models import FlightQuery
 from backend.synthesizer import Station, SynthesisResult, build_briefing
 from backend.tools import weather
+from backend.tools.airports import resolve_runway
 from backend.tools.config_lookup import load_aircraft, load_vfr_minima
 
 # Jurisdiction -> minima config dosyası eşlemesi (EASA de SERA kullanır -> TR).
@@ -68,9 +69,15 @@ async def generate_briefing(query: FlightQuery,
         if own:
             await client.aclose()
 
-    # 3) Sentez
+    # 3) Pist yönünü çöz: kullanıcı vermediyse havaalanı DB'sinden rüzgâra göre seç.
+    dep_rwy = resolve_runway(query.departure_icao, departure_runway_heading,
+                             dep_wx.wind_dir_deg if dep_wx else None)
+    dst_rwy = resolve_runway(query.destination_icao, destination_runway_heading,
+                             dst_wx.wind_dir_deg if dst_wx else None)
+
+    # 4) Sentez
     stations = [
-        Station("departure", query.departure_icao, dep_wx, departure_runway_heading),
-        Station("destination", query.destination_icao, dst_wx, destination_runway_heading),
+        Station("departure", query.departure_icao, dep_wx, dep_rwy),
+        Station("destination", query.destination_icao, dst_wx, dst_rwy),
     ]
     return build_briefing(query, stations, aircraft, minima, now=now)

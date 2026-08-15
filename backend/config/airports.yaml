@@ -1,0 +1,26 @@
+# Havaalanı / pist veritabanı (curated).
+# runways: pist yön açıları (derece). Her fiziksel pist iki yönde kullanılır
+# (örn. 06/24 -> [60, 240]). Sistem rüzgâra göre en uygun (rüzgâra karşı) yönü seçer.
+#
+# ⚠️ Değerler yaklaşıktır; kesin manyetik yönler için AIP/DHMİ teyit edilmeli (domain owner).
+# Genişletmek için: OurAirports açık veri seti (runways.csv, public domain).
+
+# --- Türkiye ---
+LTFM: { name: "İstanbul Havalimanı",        runways: [160, 340, 170, 350, 180, 360] }
+LTBA: { name: "İstanbul Atatürk",           runways: [50, 230, 170, 350] }
+LTFJ: { name: "İstanbul Sabiha Gökçen",     runways: [60, 240] }
+LTAC: { name: "Ankara Esenboğa",            runways: [30, 210] }
+LTAI: { name: "Antalya",                    runways: [180, 360] }
+LTBJ: { name: "İzmir Adnan Menderes",       runways: [160, 340] }
+LTAF: { name: "Adana Şakirpaşa",            runways: [50, 230] }
+LTCG: { name: "Trabzon",                    runways: [110, 290] }
+LTBS: { name: "Dalaman",                    runways: [10, 190] }
+LTFE: { name: "Bodrum Milas",               runways: [100, 280] }
+LTCC: { name: "Diyarbakır",                 runways: [80, 260] }
+LTCI: { name: "Van Ferit Melen",            runways: [30, 210] }
+
+# --- Uluslararası (demo) ---
+KJFK: { name: "New York JFK",               runways: [40, 220, 130, 310] }
+KBOS: { name: "Boston Logan",               runways: [40, 220, 150, 330, 90, 270] }
+EGLL: { name: "London Heathrow",            runways: [90, 270] }
+EDDF: { name: "Frankfurt",                  runways: [70, 250, 180] }

@@ -1,5 +1,12 @@
 # SkyBrief — Faz 1 Teknik Tasarım
 
+> **Not (yön güncellemesi):** Proje **dış yapay zeka / LLM olmadan**, deterministik bir
+> brifing motoru olarak hayata geçirildi. Bu belgedeki "orchestrator / Claude tool-use"
+> bölümleri **tarihsel tasarım** olarak bırakılmıştır; güncel ve yetkili kapsam için
+> [README](README.md)'ye bakın. Tasarımın "kod karar verir" omurgası zaten LLM'siz
+> çalışacak şekilde kurgulanmıştı, bu yüzden çekirdek olduğu gibi geçerlidir.
+
+
 > **Amaç (Faz 1):** Kullanıcının doğal dilde sorduğu bir uçuş sorusuna, **atıflı**, **dürüst** ve
 > **karar vermeyen** (advisory) bir hava/uçuş brifingi üreten **tek ajanlı** (Claude tool-calling)
 > bir sistem. Güvenlik matematiği **koda** aittir; LLM yalnızca orkestrasyon + retrieval + açıklama yapar.
