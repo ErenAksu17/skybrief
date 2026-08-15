@@ -8,7 +8,7 @@ deterministik bir motor + API.
 > crosswind, minima) saf, test edilebilir Python'dadır — dış yapay zeka / LLM yoktur.
 > Sistem, verisi yetersizse **kesin bir cevap uydurmaz; dürüstçe "yetersiz veri" der.**
 
-**Durum:** ✅ 73 birim testi · ✅ 25/25 eval senaryosu · ✅ abstain precision/recall %100 · ✅ 0 fabrication
+**Durum:** ✅ 75 birim testi · ✅ 25/25 eval senaryosu · ✅ abstain precision/recall %100 · ✅ 0 fabrication · ✅ Docker/Render hazır
 
 ---
 
@@ -69,7 +69,7 @@ curl -X POST localhost:8000/api/brief -H "Content-Type: application/json" \
 python -m venv .venv && .venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 uvicorn backend.main:app --reload                  # http://localhost:8000
-pytest -q                                          # 73 test
+pytest -q                                          # 75 test
 python -m evaluation.run                           # eval tablosu
 ```
 
@@ -98,8 +98,23 @@ SkyBrief/
 │   └── config/          # aircraft/*.yaml · minima/*.yaml · airports.yaml
 ├── evaluation/run.py    # eval harness
 ├── data/eval/questions.jsonl
-└── tests/               # 73 pytest
+├── frontend/            # brifing paneli (index.html · style.css · app.js)
+├── Dockerfile · render.yaml
+└── tests/               # 75 pytest
 ```
+
+## Deploy (Docker + Render)
+**Yerel Docker:**
+```bash
+docker build -t skybrief .
+docker run -p 8000:8000 skybrief      # http://localhost:8000
+```
+
+**Render (ücretsiz, tek tıkla):**
+1. Kodu GitHub'a push et.
+2. render.com → **New → Blueprint** → repoyu seç (`render.yaml` Docker'ı otomatik okur).
+3. Deploy bitince canlı URL hazır. Backend frontend'i de servis eder (tek servis).
+4. Free tier inaktivitede uyur → [cron-job.org](https://cron-job.org) ile `https://<url>/api/health`'i 5 dk'da bir ping'le.
 
 ## Bilinen sınırlar (dürüstlük bölümü)
 - **Doğal dil zaman ayrıştırma yok** — "yarın öğleden sonra" desteklenmez; zaman yapılandırılmış alanla verilir. (Bilinçli tasarım: NL, kapsam-dışı LLM'in işiydi.)
@@ -109,10 +124,10 @@ SkyBrief/
 - **Görüş 9999m** aviationweather'da `6+` gelir → 6.0 sm (muhafazakâr).
 
 ## Yol haritası (deterministik)
-- [ ] Frontend brifing paneli (form + sonuç kartı)
+- [x] Frontend brifing paneli (form + sonuç kartı)
+- [x] Docker + Render deploy hazırlığı
 - [ ] Density altitude / performans hesabı
 - [ ] Regülasyon atıf araması (yerel TF-IDF, LLM'siz)
-- [ ] Docker + Render deploy
 - [ ] Havaalanı DB'sini OurAirports ile genişletme
 
 ---

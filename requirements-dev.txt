@@ -1,0 +1,3 @@
+# Geliştirme/test bağımlılıkları
+-r requirements.txt
+pytest>=8.0

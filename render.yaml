@@ -1,0 +1,11 @@
+# Render.com blueprint — Docker ile tek tıkla deploy.
+# Panelde: New > Blueprint > bu repoyu seç.
+services:
+  - type: web
+    name: skybrief
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    # Free tier inaktivitede uyur -> cron-job.org ile /api/health'i 5 dk'da bir ping'le.

@@ -1,0 +1,18 @@
+# İmaja girmeyecekler (küçük ve temiz imaj)
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.git/
+.gitignore
+tests/
+evaluation/
+data/
+rag/
+*.md
+.env
+.dockerignore
+Dockerfile
+render.yaml
+requirements-dev.txt

@@ -1,6 +1,6 @@
 # Ortam / secret
 .env
-.venv/
+.venv*/
 venv/
 
 # Python
