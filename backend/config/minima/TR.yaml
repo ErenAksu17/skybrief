@@ -1,0 +1,9 @@
+# ⚠️ SERA.5001 (Türkiye/EASA) VFR minimaları — PLACEHOLDER DEĞERLER.
+# Eren (domain owner) SERA'ya göre DOĞRULAYIP düzeltecek.
+# Dönüşüm notu: 5 km ≈ 3.1 sm, 1.5 km ≈ 0.93 sm.
+G:   # kontrolsüz saha, 3050 m (10000 ft) AMSL altı
+  day:   { visibility_min_sm: 3.1, ceiling_min_ft: 1000 }   # ~5 km
+  night: { visibility_min_sm: 3.1, ceiling_min_ft: 1500 }
+C:   # kontrollü saha
+  day:   { visibility_min_sm: 3.1, ceiling_min_ft: 1500 }
+  night: { visibility_min_sm: 3.1, ceiling_min_ft: 1500 }

@@ -1,0 +1,9 @@
+# FAA 14 CFR 91.155 (basitleştirilmiş) VFR görüş/tavan minimaları.
+# visibility_min_sm: statute mile. ceiling_min_ft: VFR operasyon için makul taban
+# (91.155 tavan yerine bulut uzaklığı belirtir; burada pratik bir taban kullanıyoruz).
+G:   # Class G (kontrolsüz), 1200 AGL altı
+  day:   { visibility_min_sm: 1, ceiling_min_ft: 1000 }
+  night: { visibility_min_sm: 3, ceiling_min_ft: 1000 }
+E:   # Class E, 10000 MSL altı
+  day:   { visibility_min_sm: 3, ceiling_min_ft: 1000 }
+  night: { visibility_min_sm: 3, ceiling_min_ft: 1000 }

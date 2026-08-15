@@ -1,0 +1,18 @@
+# Ortam / secret
+.env
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# RAG korpusu (telifli POH vb. repoya girmez)
+rag/corpus/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

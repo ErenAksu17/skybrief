@@ -1,0 +1,6 @@
+# Cessna 172S Skyhawk — POH kaynaklı limitler.
+# Kaynak: C172S POH (domain uzmanı doğrulamalı).
+type: "Cessna 172S Skyhawk"
+max_demonstrated_crosswind_kt: 15   # POH "maximum demonstrated crosswind"
+service_ceiling_ft: 14000
+vfr_fuel_reserve_min: 30             # gündüz VFR yakıt rezervi (dakika)
