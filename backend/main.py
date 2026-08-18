@@ -86,7 +86,12 @@ async def brief(req: BriefRequest) -> Briefing:
 
 
 # --- Frontend'i servis et (tek komutla local demo) -----------------------
-FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
+# Öncelik: React (Vite) build çıktısı web/dist; yoksa eski vanilla frontend/.
+_ROOT = Path(__file__).resolve().parent.parent
+FRONTEND_DIR = _ROOT / "web" / "dist"
+if not FRONTEND_DIR.exists():
+    FRONTEND_DIR = _ROOT / "frontend"
+
 if FRONTEND_DIR.exists():
     @app.get("/")
     async def index():
