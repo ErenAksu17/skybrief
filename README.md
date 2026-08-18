@@ -8,7 +8,10 @@ deterministik bir motor + API.
 > crosswind, minima) saf, test edilebilir Python'dadır — dış yapay zeka / LLM yoktur.
 > Sistem, verisi yetersizse **kesin bir cevap uydurmaz; dürüstçe "yetersiz veri" der.**
 
-**Durum:** ✅ 75 birim testi · ✅ 25/25 eval senaryosu · ✅ abstain precision/recall %100 · ✅ 0 fabrication · ✅ Docker/Render hazır
+**Durum:** ✅ 75 birim testi · ✅ 25/25 eval senaryosu · ✅ abstain precision/recall %100 · ✅ 0 fabrication · ✅ canlı deploy
+
+🔗 **Canlı demo:** <https://skybrief.onrender.com>  ·  💻 **Kod:** <https://github.com/ErenAksu17/skybrief>
+> ⏳ Render ücretsiz plan: inaktiviteden sonra ilk açılış ~50 sn sürebilir (uyandırma).
 
 ---
 
