@@ -1,5 +1,11 @@
 # 🛩️ SkyBrief — Deterministic Flight Briefing Engine
 
+[![Lisans](https://img.shields.io/badge/Lisans-MIT-22c55e?style=flat-square)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![Tests](https://img.shields.io/badge/testler-75%20birim%20%C2%B7%2025%20eval-blue?style=flat-square)
+
 Bir uçuş için **kalkış/varış hava koşullarını, VFR minimalarını ve yan rüzgârı**
 değerlendirip **dürüst, atıflı, karar-vermeyen (advisory)** bir uçuş brifingi üreten
 deterministik bir motor + API.
@@ -139,3 +145,9 @@ docker run -p 8000:8000 skybrief      # http://localhost:8000
 
 ---
 _Veri: OpenSky yok; aviationweather.gov (NOAA/NWS). Advisory-only — nihai karar PIC'e aittir._
+
+## 📄 Lisans
+
+[MIT](LICENSE) — © 2026 Eren AKSU. Kullanabilir, değiştirebilir ve dağıtabilirsiniz;
+telif bildirimini koruyun. Yazılım "olduğu gibi" sunulur ve **advisory-only**'dir:
+uçuş güvenliğine dair nihai karar sorumlu pilota (PIC) aittir.
