@@ -13,6 +13,9 @@ deterministik bir motor + API.
 🔗 **Canlı demo:** <https://skybrief.onrender.com>  ·  💻 **Kod:** <https://github.com/ErenAksu17/skybrief>
 > ⏳ Render ücretsiz plan: inaktiviteden sonra ilk açılış ~50 sn sürebilir (uyandırma).
 
+![SkyBrief — canlı demo](docs/demo.jpg)
+*Canlı brifing (LTAC → LTAI, C172 VFR): deterministik değerlendirme + kaynak METAR + dürüst risk faktörleri.*
+
 ---
 
 ## 🇬🇧 English (summary)
@@ -42,6 +45,7 @@ See the Turkish sections below for full docs.
 - 🛡️ **Guardrail** — her sayısal iddia bir araç çıktısına izlenebilir olmalı (`validate_no_fabrication`).
 - 🌍 **Ücretsiz veri** — aviationweather.gov (anahtar gerekmez).
 - 📊 **Eval seti** — 25 sabit senaryo + metrik harness (CI kapısı).
+- 🎨 **Modern arayüz** — React + Vite + Tailwind + shadcn/ui (renkli havacılık koyu teması).
 
 ## Mimari
 ```mermaid
